@@ -2,6 +2,8 @@ import prisma from "@/app/lib/Prisma";
 import { NextRequest, NextResponse } from "next/server";
 import * as yup from "yup";
 
+
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const skip = Number(searchParams.get("skip") || 0)
@@ -26,6 +28,21 @@ export async function POST(request: NextRequest) {
     const { completed, description } = await postSchema.validate(await request.json())
     const todo = await prisma.todo.create({ data: { completed, description } });
     return NextResponse.json(todo);
+  } catch (error) {
+    return NextResponse.json(error, { status: 400 });
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+
+    await prisma.todo.deleteMany({
+      where: {
+        completed: true
+      }
+    });
+    return NextResponse.json({ message: "Deleted completed todos" });
+
   } catch (error) {
     return NextResponse.json(error, { status: 400 });
   }
