@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from "@/app/lib/Prisma"
+import prisma from "@/lib/Prisma"
 import { Todo } from "@prisma/client"
 import { revalidatePath } from "next/cache"
 

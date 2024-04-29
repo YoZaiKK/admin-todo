@@ -1,4 +1,4 @@
-import prisma from "@/app/lib/Prisma";
+import prisma from "@/lib/Prisma";
 import { NextRequest, NextResponse } from "next/server";
 import * as yup from "yup";
 

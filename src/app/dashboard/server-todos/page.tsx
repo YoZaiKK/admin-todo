@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-import prisma from "@/app/lib/Prisma";
+import prisma from "@/lib/Prisma";
 import { NewTodo, TodosGrid } from "@/todos";
 
 export const metadata = {
